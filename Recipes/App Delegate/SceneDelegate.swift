@@ -10,6 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -21,10 +22,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //
 //        reviceVM.getAllRecipe()
         
-        let recipeListVC = RecipeListViewController(withRecipeViewMOdel: RecipeViewModel(withRecipeService: RecipeService(withEndPoint: CategoryRecipeEndPoint(withQueryParam: [:], andOperation: HttpOperation.getAll))))
-    
         
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        let _window = UIWindow(windowScene: windowScene)
+        
+        let recipeListVC = RecipeListViewController(withRecipeViewMOdel: RecipeViewModel(withRecipeService: RecipeService(withEndPoint: CategoryRecipeEndPoint(withQueryParam: [:], andOperation: HttpOperation.getAll))))
+        
+        let navigationVC = UINavigationController(rootViewController: recipeListVC)
+        _window.rootViewController = navigationVC
+        self.window = _window
+        self.window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

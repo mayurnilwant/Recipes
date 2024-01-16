@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 enum ServiceVMStatus {
     case loading
@@ -25,8 +26,13 @@ protocol ViewModelProtocol {
 
 class RecipeViewModel: ViewModelProtocol {
     var resultItem: [Recipe]?
-    var viewModelServiceStatus = ServiceVMStatus.notInitialized
+    @Published var viewModelServiceStatus = ServiceVMStatus.notInitialized
     let recipeService: RecipeServiceProtocol?
+    
+    
+    // Publish result through PassBy value
+//    var publishRecipeResultService : PassthroughSubject<[Recipe]?,Error>?
+    
     init(withRecipeService service: RecipeServiceProtocol) {
         
         self.recipeService = service
@@ -37,16 +43,19 @@ class RecipeViewModel: ViewModelProtocol {
         guard  self.recipeService != nil else {
             return
         }
-        self.recipeService?.getAllRecipes { result in
+        self.recipeService?.getAllRecipes {[weak self] result in
             
             switch result {
             case .success(let recipe):
                 do {
-                    self.resultItem = recipe?.recipes
+                    self?.resultItem = recipe?.recipes
+                    self?.viewModelServiceStatus = .success
+//                    self?.publishRecipeResultService?.send(recipe?.recipes)
                 }
             default:
                 do {
-                    self.viewModelServiceStatus = .failure
+                    self?.viewModelServiceStatus = .failure
+//                    self?.publishRecipeResultService?.send(nil)
                     }
                 }
             }
