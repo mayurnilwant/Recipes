@@ -17,9 +17,18 @@ protocol ViewControllerConfigurationProtocol where Self :  UIViewController {
 }
 
 
-class RecipeListViewController : UIViewController, ViewControllerConfigurationProtocol {
+protocol ListViewControllerProtocol {
+    
+    var tblView: UITableView! {get set}
+}
+
+
+class RecipeListViewController : UIViewController, ViewControllerConfigurationProtocol, ListViewControllerProtocol {
+    
     
     let recipeVM : RecipeViewModel?
+    var tblView: UITableView!
+
     var vmSubs = Set<AnyCancellable>()
         
     init(withRecipeViewMOdel recipeVM: RecipeViewModel) {
@@ -42,6 +51,11 @@ class RecipeListViewController : UIViewController, ViewControllerConfigurationPr
     
     override func viewDidAppear(_ animated: Bool) {
         
+        self.tblView = UITableView(frame: self.view.frame, style: .plain)
+//        self.tblView.register(UITableViewCell.self, forCellReuseIdentifier: "cellIdentifier")
+        self.tblView.delegate = self
+        self.tblView.dataSource = self
+        self.view.addSubview(tblView)
         
     }
     
@@ -55,9 +69,11 @@ class RecipeListViewController : UIViewController, ViewControllerConfigurationPr
     
     func configureVMCallBacks() {
         
-        self.recipeVM?.$viewModelServiceStatus.sink(receiveValue: { status in
+        self.recipeVM?.$viewModelServiceStatus
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { status in
             if status == .success {
-                    
+                    self.tblView.reloadData()
                 
             }else {
                 
@@ -65,5 +81,38 @@ class RecipeListViewController : UIViewController, ViewControllerConfigurationPr
                 
         })
         .store(in: &self.vmSubs)
+    }
+}
+
+
+extension RecipeListViewController:  UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.recipeVM?.resultItem?.count ?? 0
+    }
+    
+
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
+        var _cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier")
+        if _cell == nil {
+            _cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellIdentifier")
+        }
+        
+        let recipe = self.recipeVM?.resultItem?[indexPath.row]
+        _cell?.textLabel?.text = recipe?.categoryName
+        _cell?.detailTextLabel?.text = recipe?.categoryDescription
+        return _cell ?? UITableViewCell()
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let recipe = self.recipeVM?.resultItem?[indexPath.row] else {
+            return
+        }
+        
+       // print(recipe)
     }
 }

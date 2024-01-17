@@ -18,7 +18,6 @@ enum ServiceVMStatus {
 protocol ViewModelProtocol {
     
     associatedtype  ResultItem
-    
     var resultItem: ResultItem {get set}
     var viewModelServiceStatus : ServiceVMStatus{get set}
 }
@@ -50,12 +49,10 @@ class RecipeViewModel: ViewModelProtocol {
                 do {
                     self?.resultItem = recipe?.recipes
                     self?.viewModelServiceStatus = .success
-//                    self?.publishRecipeResultService?.send(recipe?.recipes)
                 }
             default:
                 do {
                     self?.viewModelServiceStatus = .failure
-//                    self?.publishRecipeResultService?.send(nil)
                     }
                 }
             }
