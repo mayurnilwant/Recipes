@@ -17,6 +17,7 @@ class RecipeCell: UITableViewCell {
         let cellImageView = UIImageView(frame: CGRectMake(5.0, 5.0, 100.0, 100.0))
         cellImageView.image = UIImage(named: "loading")
         cellImageView.translatesAutoresizingMaskIntoConstraints = false
+        //cellImageView.circularImage(withBorderWidth: 2.0, andBorderColor: .blue)
         return cellImageView
     }()
                                       
@@ -48,9 +49,9 @@ class RecipeCell: UITableViewCell {
 //        self.recipeCategoryImage.widthAnchor.constraint(equalToConstant: 75.0).isActive = true
 //        self.recipeCategoryImage.heightAnchor.constraint(equalToConstant: 75.0).isActive = true
         
-        NSLayoutConstraint.activate([self.recipeCategoryImage.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 5.0), self.recipeCategoryImage.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 5.0), self.recipeCategoryImage.widthAnchor.constraint(equalToConstant: 75.0), self.recipeCategoryImage.heightAnchor.constraint(equalToConstant: 75.0)])
+        NSLayoutConstraint.activate([self.recipeCategoryImage.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 5.0), self.recipeCategoryImage.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 5.0), self.recipeCategoryImage.widthAnchor.constraint(equalToConstant: 60.0), self.recipeCategoryImage.heightAnchor.constraint(equalToConstant: 60.0)])
         
-        NSLayoutConstraint.activate([self.lblTitle.leadingAnchor.constraint(equalTo: self.recipeCategoryImage.trailingAnchor, constant: 10.0),self.lblTitle.topAnchor.constraint(equalTo: self.recipeCategoryImage.topAnchor, constant: 10.0), self.lblTitle.widthAnchor.constraint(equalToConstant: 200.0), self.lblTitle.heightAnchor.constraint(equalToConstant: 50.0)])
+        NSLayoutConstraint.activate([self.lblTitle.leadingAnchor.constraint(equalTo: self.recipeCategoryImage.trailingAnchor, constant: 10.0),self.lblTitle.topAnchor.constraint(equalTo: self.recipeCategoryImage.topAnchor, constant: 0.0), self.lblTitle.widthAnchor.constraint(equalToConstant: 200.0), self.lblTitle.heightAnchor.constraint(equalToConstant: 50.0)])
         
         NSLayoutConstraint.activate([self.lblDescription.leadingAnchor.constraint(equalTo: self.lblTitle.leadingAnchor, constant: 0.0),self.lblDescription.topAnchor.constraint(equalTo: self.lblTitle.topAnchor, constant: 25.0), self.lblDescription.widthAnchor.constraint(equalToConstant: 2000), self.lblDescription.heightAnchor.constraint(equalToConstant: 50.0)])
 //

@@ -30,6 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let recipeListVC = RecipeListViewController(withRecipeViewMOdel: RecipeViewModel(withRecipeService: RecipeService(withEndPoint: CategoryRecipeEndPoint(withQueryParam: [:], andOperation: HttpOperation.getAll))))
         
         let navigationVC = UINavigationController(rootViewController: recipeListVC)
+        navigationVC.setNavigationBarHidden(false, animated: false)
         _window.rootViewController = navigationVC
         self.window = _window
         self.window?.makeKeyAndVisible()
