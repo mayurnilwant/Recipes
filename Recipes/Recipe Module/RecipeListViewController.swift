@@ -52,7 +52,7 @@ class RecipeListViewController : UIViewController, ViewControllerConfigurationPr
     override func viewDidAppear(_ animated: Bool) {
         
         self.tblView = UITableView(frame: self.view.frame, style: .plain)
-//        self.tblView.register(UITableViewCell.self, forCellReuseIdentifier: "cellIdentifier")
+        self.tblView.register(RecipeCell.self, forCellReuseIdentifier: "cellIdentifier")
         self.tblView.delegate = self
         self.tblView.dataSource = self
         self.view.addSubview(tblView)
@@ -94,25 +94,29 @@ extension RecipeListViewController:  UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
-        var _cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier")
+        var _cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier") as? RecipeCell
         if _cell == nil {
-            _cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellIdentifier")
+            _cell = RecipeCell(style: .default, reuseIdentifier: "cellIdentifier")
         }
         
-        let recipe = self.recipeVM?.resultItem?[indexPath.row]
-        _cell?.textLabel?.text = recipe?.categoryName
-        _cell?.detailTextLabel?.text = recipe?.categoryDescription
+        if let recipe = self.recipeVM?.resultItem?[indexPath.row] {
+            _cell?.configureCell(withRecipe: recipe)
+        }
+        
         return _cell ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80.0
     }
     
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let recipe = self.recipeVM?.resultItem?[indexPath.row] else {
+        guard let _ = self.recipeVM?.resultItem?[indexPath.row] else {
             return
         }
-        
-       // print(recipe)
+
     }
 }
