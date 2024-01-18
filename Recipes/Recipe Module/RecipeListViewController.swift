@@ -59,11 +59,11 @@ class RecipeListViewController : UIViewController, ViewControllerConfigurationPr
         
     }
     
-    
     //PRAGMA MARK  - Protocol method
     
     func configureViewController() {
     
+        self.navigationItem.title = "Recipes"
         self.recipeVM?.getAllRecipe()
     }
     
@@ -99,9 +99,13 @@ extension RecipeListViewController:  UITableViewDelegate, UITableViewDataSource 
             _cell = RecipeCell(style: .default, reuseIdentifier: "cellIdentifier")
         }
         
-        if let recipe = self.recipeVM?.resultItem?[indexPath.row] {
+        if let recipe = self.recipeVM?.resultItem?[indexPath.row] as? Recipe{
             _cell?.configureCell(withRecipe: recipe)
+            
+            _cell?.recipeCategoryImage.downLoadImageInBackground(withUrl: recipe.categoryThumbNail ?? "")
         }
+        
+
         
         return _cell ?? UITableViewCell()
     }
