@@ -27,7 +27,7 @@ class CategoryMealViewModel {
                 do {
                     callBack(responses)
                 }
-            case .failure(let err):
+            case .failure(_):
                 do {
                     callBack(nil)
                 }

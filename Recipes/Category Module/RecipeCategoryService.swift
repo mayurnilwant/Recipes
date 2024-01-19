@@ -30,7 +30,9 @@ struct MealMetaDataresponse: Codable {
     }
 }
 
-struct MealMeta: Codable {
+struct MealMeta: Codable, ListCellModel {
+    
+    
     
     let mealName: String?
     let mealId: String?
@@ -57,6 +59,18 @@ struct MealMeta: Codable {
 //        try container.encode(self.mealName, forKey: .mealName)
 //        try container.encode(self.mealId, forKey: .mealId)
 //        try container.encode(self.mealThumbNail, forKey: .mealThumbNail)
+    }
+    
+    var title: String {
+        return self.mealId ?? ""
+    }
+    
+    var subTitle: String {
+        self.mealName ?? ""
+    }
+     
+    var imageUrlString: String {
+        return self.mealThumbNail ?? ""
     }
 }
 

@@ -26,12 +26,12 @@ protocol ListViewControllerProtocol {
 class CategoryListViewController : UIViewController, ViewControllerConfigurationProtocol, ListViewControllerProtocol {
     
     
-    let recipeVM : RecipeViewModel?
+    let recipeVM : CategoryViewModel?
     var tblView: UITableView!
 
     var vmSubs = Set<AnyCancellable>()
         
-    init(withRecipeViewMOdel recipeVM: RecipeViewModel) {
+    init(withRecipeViewMOdel recipeVM: CategoryViewModel) {
         
         self.recipeVM = recipeVM
         super.init(nibName: nil, bundle: nil)
@@ -40,7 +40,7 @@ class CategoryListViewController : UIViewController, ViewControllerConfiguration
     
     required init?(coder: NSCoder) {
         
-        self.recipeVM  = RecipeViewModel(withRecipeService: RecipeService(withEndPoint: CategoryRecipeEndPoint(withQueryParam: [:], andOperation: .getAll)))
+        self.recipeVM  = CategoryViewModel(withRecipeService: RecipeService(withEndPoint: CategoryRecipeEndPoint(withQueryParam: [:], andOperation: .getAll)))
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -102,7 +102,7 @@ extension CategoryListViewController:  UITableViewDelegate, UITableViewDataSourc
         if let recipe = self.recipeVM?.resultItem?[indexPath.row] as? RecipeCategory{
             _cell?.configureCell(withListModel: recipe)
             
-            _cell?.recipeCategoryImage.downLoadImageInBackground(withUrl: recipe.categoryThumbNail ?? "")
+            _cell?.listItemImage.downLoadImageInBackground(withUrl: recipe.categoryThumbNail ?? "")
         }
         
 

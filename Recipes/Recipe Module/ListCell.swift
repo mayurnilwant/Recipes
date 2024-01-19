@@ -18,7 +18,7 @@ protocol ListCellModel: Codable {
 
 class ListCell: UITableViewCell {
     
-    var recipeCategoryImage: UIImageView = {
+    var listItemImage: UIImageView = {
         
         let cellImageView = UIImageView(frame: CGRectMake(5.0, 5.0, 100.0, 100.0))
         cellImageView.image = UIImage(named: "loading")
@@ -48,7 +48,7 @@ class ListCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.contentView.addSubview(recipeCategoryImage)
+        self.contentView.addSubview(listItemImage)
         self.contentView.addSubview(lblTitle)
         self.contentView.addSubview(lblDescription)
         
@@ -57,9 +57,9 @@ class ListCell: UITableViewCell {
 //        self.recipeCategoryImage.widthAnchor.constraint(equalToConstant: 75.0).isActive = true
 //        self.recipeCategoryImage.heightAnchor.constraint(equalToConstant: 75.0).isActive = true
         
-        NSLayoutConstraint.activate([self.recipeCategoryImage.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 5.0), self.recipeCategoryImage.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 5.0), self.recipeCategoryImage.widthAnchor.constraint(equalToConstant: 60.0), self.recipeCategoryImage.heightAnchor.constraint(equalToConstant: 60.0)])
+        NSLayoutConstraint.activate([self.listItemImage.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 5.0), self.listItemImage.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 5.0), self.listItemImage.widthAnchor.constraint(equalToConstant: 60.0), self.listItemImage.heightAnchor.constraint(equalToConstant: 60.0)])
         
-        NSLayoutConstraint.activate([self.lblTitle.leadingAnchor.constraint(equalTo: self.recipeCategoryImage.trailingAnchor, constant: 10.0),self.lblTitle.topAnchor.constraint(equalTo: self.recipeCategoryImage.topAnchor, constant: 0.0), self.lblTitle.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 10.0), self.lblTitle.heightAnchor.constraint(equalToConstant: 50.0)])
+        NSLayoutConstraint.activate([self.lblTitle.leadingAnchor.constraint(equalTo: self.listItemImage.trailingAnchor, constant: 10.0),self.lblTitle.topAnchor.constraint(equalTo: self.listItemImage.topAnchor, constant: 0.0), self.lblTitle.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 10.0), self.lblTitle.heightAnchor.constraint(equalToConstant: 50.0)])
         
         NSLayoutConstraint.activate([self.lblDescription.leadingAnchor.constraint(equalTo: self.lblTitle.leadingAnchor, constant: 0.0),self.lblDescription.topAnchor.constraint(equalTo: self.lblTitle.topAnchor, constant: 25.0), self.lblDescription.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15.0), self.lblDescription.heightAnchor.constraint(equalToConstant: 50.0)])
 //
@@ -72,7 +72,7 @@ class ListCell: UITableViewCell {
         
         self.lblTitle.text = model.title
         self.lblDescription.text = model.subTitle
-        self.recipeCategoryImage.image = UIImage(named: "loading")
+        self.listItemImage.image = UIImage(named: "loading")
     }
      
     
