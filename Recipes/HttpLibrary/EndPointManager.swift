@@ -121,3 +121,30 @@ struct CategoryRecipeEndPoint: EndPointProtocol {
     }
     
 }
+
+
+struct MealCategoryEnfPoint: EndPointProtocol {
+    init() {
+        self.httpOperation = .getAll
+    }
+    
+    var queryParam: [String : String]?
+    
+    
+    var httpOperation: HttpOperation
+    
+    var path : String {
+        
+        switch self.httpOperation {
+            
+        case .getAll:
+            return "/api/json/v1/1/filter.php"
+        case .getItemById:
+           return "/api/json/v1/1/filter.php"
+        case .postItem(_):
+           return "/path"
+        }
+    }
+    
+    
+}
