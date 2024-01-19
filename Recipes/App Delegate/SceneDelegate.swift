@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        reviceVM.getAllRecipe()
         
         
-        let categoryMealVM = CategoryMealViewModel(categoryService: CategoryService(withEndPoint: MealCategoryEnfPoint(withQueryParam: [:], andOperation: .getAll)))
+        let categoryMealVM = CategoryMealViewModel(categoryService: MealService(withEndPoint: MealCategoryEnfPoint(withQueryParam: [:], andOperation: .getAll)))
         
         let result = categoryMealVM.getAllMeals(id: "Beef") { result in
         

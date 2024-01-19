@@ -11,9 +11,9 @@ import Foundation
 
 class CategoryMealViewModel {
     
-    let categoryService: CategoryService    
+    let categoryService: MealService    
     
-    init(categoryService: CategoryService) {
+    init(categoryService: MealService) {
         self.categoryService = categoryService
     }
     

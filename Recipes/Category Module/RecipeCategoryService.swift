@@ -75,14 +75,14 @@ struct MealMeta: Codable, ListCellModel {
 }
 
 
-protocol CategoryRecipeProtocol:HttpRequestHandlerProtocol {
+protocol MealServiceProtocol:HttpRequestHandlerProtocol {
     
     func getCategoryListById(withCategoryName name: String, andCallBack callBack: @escaping (ApiResult<MealMetaDataresponse,ApiError>) -> Void)
 }
 
 
 
-class CategoryService: CategoryRecipeProtocol {
+class MealService: MealServiceProtocol {
     
     
     required init() {}
