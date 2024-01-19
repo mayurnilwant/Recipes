@@ -26,6 +26,7 @@ class RecipeCell: UITableViewCell {
         
         let lblTitle = UILabel(frame: CGRectMake(5.0, 5.0, 200, 40.0))
         lblTitle.translatesAutoresizingMaskIntoConstraints = false
+        lblTitle.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
         return lblTitle
     }()
     
@@ -33,6 +34,7 @@ class RecipeCell: UITableViewCell {
         
         let lblDescription = UILabel(frame: CGRectMake(5.0, 5.0, 200, 40.0))
         lblDescription.translatesAutoresizingMaskIntoConstraints = false
+        lblDescription.font = UIFont.systemFont(ofSize: 20.0, weight: .light)
         return lblDescription
     }()
     
@@ -51,9 +53,9 @@ class RecipeCell: UITableViewCell {
         
         NSLayoutConstraint.activate([self.recipeCategoryImage.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 5.0), self.recipeCategoryImage.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 5.0), self.recipeCategoryImage.widthAnchor.constraint(equalToConstant: 60.0), self.recipeCategoryImage.heightAnchor.constraint(equalToConstant: 60.0)])
         
-        NSLayoutConstraint.activate([self.lblTitle.leadingAnchor.constraint(equalTo: self.recipeCategoryImage.trailingAnchor, constant: 10.0),self.lblTitle.topAnchor.constraint(equalTo: self.recipeCategoryImage.topAnchor, constant: 0.0), self.lblTitle.widthAnchor.constraint(equalToConstant: 200.0), self.lblTitle.heightAnchor.constraint(equalToConstant: 50.0)])
+        NSLayoutConstraint.activate([self.lblTitle.leadingAnchor.constraint(equalTo: self.recipeCategoryImage.trailingAnchor, constant: 10.0),self.lblTitle.topAnchor.constraint(equalTo: self.recipeCategoryImage.topAnchor, constant: 0.0), self.lblTitle.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 10.0), self.lblTitle.heightAnchor.constraint(equalToConstant: 50.0)])
         
-        NSLayoutConstraint.activate([self.lblDescription.leadingAnchor.constraint(equalTo: self.lblTitle.leadingAnchor, constant: 0.0),self.lblDescription.topAnchor.constraint(equalTo: self.lblTitle.topAnchor, constant: 25.0), self.lblDescription.widthAnchor.constraint(equalToConstant: 2000), self.lblDescription.heightAnchor.constraint(equalToConstant: 50.0)])
+        NSLayoutConstraint.activate([self.lblDescription.leadingAnchor.constraint(equalTo: self.lblTitle.leadingAnchor, constant: 0.0),self.lblDescription.topAnchor.constraint(equalTo: self.lblTitle.topAnchor, constant: 25.0), self.lblDescription.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15.0), self.lblDescription.heightAnchor.constraint(equalToConstant: 50.0)])
 //
         
     }

@@ -31,7 +31,7 @@ extension UIImageView {
         }
         
         let session = URLSession.shared
-        let imageTask = session.dataTask(with: URLRequest(url: imageUrl)) { imageData, response, error in
+        let _ = session.dataTask(with: URLRequest(url: imageUrl)) {[weak self] imageData, response, error in
             
             guard let status = (response as? HTTPURLResponse)?.statusCode, (200...299).contains(status) else {
                 
@@ -39,7 +39,7 @@ extension UIImageView {
             }
             
             DispatchQueue.main.async {
-                self.image = UIImage(data: imageData ?? Data())
+                self?.image = UIImage(data: imageData ?? Data())
             }
             
             
