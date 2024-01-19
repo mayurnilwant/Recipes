@@ -35,7 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let _window = UIWindow(windowScene: windowScene)
         
-        let recipeListVC = CategoryListViewController(withRecipeViewMOdel: CategoryViewModel(withRecipeService: RecipeService(withEndPoint: CategoryRecipeEndPoint(withQueryParam: [:], andOperation: HttpOperation.getAll))))
+        let recipeListVC = CategoryListViewController(withRecipeViewMOdel: CategoryViewModel(withRecipeService: CategoryService(withEndPoint: CategoryRecipeEndPoint(withQueryParam: [:], andOperation: HttpOperation.getAll))))
         
         let navigationVC = UINavigationController(rootViewController: recipeListVC)
         navigationVC.setNavigationBarHidden(false, animated: false)

@@ -40,7 +40,7 @@ class CategoryListViewController : UIViewController, ViewControllerConfiguration
     
     required init?(coder: NSCoder) {
         
-        self.recipeVM  = CategoryViewModel(withRecipeService: RecipeService(withEndPoint: CategoryRecipeEndPoint(withQueryParam: [:], andOperation: .getAll)))
+        self.recipeVM  = CategoryViewModel(withRecipeService: CategoryService(withEndPoint: CategoryRecipeEndPoint(withQueryParam: [:], andOperation: .getAll)))
         fatalError("init(coder:) has not been implemented")
     }
     
