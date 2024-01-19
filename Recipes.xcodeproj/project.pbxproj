@@ -59,13 +59,13 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		E69E342A2B59FC5100C02167 /* Category */ = {
+		E69E342A2B59FC5100C02167 /* Category Module */ = {
 			isa = PBXGroup;
 			children = (
 				E69E342B2B59FC9E00C02167 /* RecipeCategoryService.swift */,
 				E69E342D2B5A0E9300C02167 /* CategoryMealVM.swift */,
 			);
-			path = Category;
+			path = "Category Module";
 			sourceTree = "<group>";
 		};
 		E6D698672B44CAC20085A54D /* App Delegate */ = {
@@ -96,10 +96,10 @@
 		E6F741452B40B004004EDD3C /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
-				E69E342A2B59FC5100C02167 /* Category */,
+				E6F7415F2B43BDBC004EDD3C /* Recipe Module */,
+				E69E342A2B59FC5100C02167 /* Category Module */,
 				E69E34272B58D0C800C02167 /* Extension */,
 				E6D698672B44CAC20085A54D /* App Delegate */,
-				E6F7415F2B43BDBC004EDD3C /* Recipe Module */,
 				E6F7415A2B41316E004EDD3C /* HttpLibrary */,
 				E6F7414F2B40B005004EDD3C /* Assets.xcassets */,
 				E6F741512B40B005004EDD3C /* LaunchScreen.storyboard */,
