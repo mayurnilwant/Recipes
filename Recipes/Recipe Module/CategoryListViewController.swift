@@ -23,7 +23,7 @@ protocol ListViewControllerProtocol {
 }
 
 
-class RecipeListViewController : UIViewController, ViewControllerConfigurationProtocol, ListViewControllerProtocol {
+class CategoryListViewController : UIViewController, ViewControllerConfigurationProtocol, ListViewControllerProtocol {
     
     
     let recipeVM : RecipeViewModel?
@@ -85,7 +85,7 @@ class RecipeListViewController : UIViewController, ViewControllerConfigurationPr
 }
 
 
-extension RecipeListViewController:  UITableViewDelegate, UITableViewDataSource {
+extension CategoryListViewController:  UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.recipeVM?.resultItem?.count ?? 0
     }

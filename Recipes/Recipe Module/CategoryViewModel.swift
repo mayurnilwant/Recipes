@@ -23,7 +23,7 @@ protocol ViewModelProtocol {
 }
 
 
-class RecipeViewModel: ViewModelProtocol {
+class CategoryViewModel: ViewModelProtocol {
     var resultItem: [RecipeCategory]?
     @Published var viewModelServiceStatus = ServiceVMStatus.notInitialized
     let recipeService: RecipeServiceProtocol?
