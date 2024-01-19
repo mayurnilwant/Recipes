@@ -49,6 +49,7 @@ extension HttpRequestHandlerProtocol {
             
             
             let jsonDecoder = JSONDecoder()
+            print("Data: \(String(describing: String(data: responseData ?? Data(), encoding: .utf8)))")
             let parsedObj =  try? jsonDecoder.decode(type.self, from: responseData ?? Data())
             callBack(.success(parsedObj))
             

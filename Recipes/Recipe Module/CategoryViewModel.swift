@@ -28,10 +28,6 @@ class CategoryViewModel: ViewModelProtocol {
     @Published var viewModelServiceStatus = ServiceVMStatus.notInitialized
     let recipeService: CategoryServiceProtocol?
     
-    
-    // Publish result through PassBy value
-//    var publishRecipeResultService : PassthroughSubject<[Recipe]?,Error>?
-    
     init(withRecipeService service: CategoryServiceProtocol) {
         
         self.recipeService = service

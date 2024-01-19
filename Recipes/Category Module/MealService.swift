@@ -9,7 +9,7 @@ import Foundation
 
 struct MealMetaDataresponse: Codable {
     
-    let mealMetadate: [MealMeta]?
+    let mealMetadata: [MealMeta]?
     
     enum CodingKeys : String, CodingKey {
         
@@ -20,7 +20,7 @@ struct MealMetaDataresponse: Codable {
         
         let mealsContainer = try? decoder.container(keyedBy: CodingKeys.self)
         
-        self.mealMetadate = try? mealsContainer?.decodeIfPresent([MealMeta].self, forKey: CodingKeys.meals)
+        self.mealMetadata = try? mealsContainer?.decodeIfPresent([MealMeta].self, forKey: CodingKeys.meals)
         
         
     }

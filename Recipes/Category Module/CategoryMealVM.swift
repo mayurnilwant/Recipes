@@ -6,10 +6,17 @@
 //
 
 import Foundation
+import Combine
 
 
 
-class CategoryMealViewModel {
+class CategoryMealViewModel: ViewModelProtocol {
+    var resultItem: [MealMeta]?
+    
+    @Published var viewModelServiceStatus = ServiceVMStatus.notInitialized
+    
+    typealias ResultItem = [MealMeta]?
+    
     
     let categoryService: MealService    
     
@@ -17,7 +24,7 @@ class CategoryMealViewModel {
         self.categoryService = categoryService
     }
     
-    func getAllMeals(id name: String, andCallBack callBack: @escaping (MealMetaDataresponse?)-> Void) {
+    func getAllMeals(id name: String) {
         
         self.categoryService.getCategoryListById(withCategoryName: name) { result in
             
@@ -25,11 +32,12 @@ class CategoryMealViewModel {
                 
                 case .success(let responses) :
                 do {
-                    callBack(responses)
+                    self.viewModelServiceStatus = .success
+                    self.resultItem = responses?.mealMetadata
                 }
             case .failure(_):
                 do {
-                    callBack(nil)
+                    self.viewModelServiceStatus = .failure
                 }
             }
         }

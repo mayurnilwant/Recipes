@@ -17,13 +17,13 @@ protocol ViewControllerConfigurationProtocol where Self :  UIViewController {
 }
 
 
-protocol ListViewControllerProtocol {
+protocol ListViewControllerProtocol:ViewControllerConfigurationProtocol {
     
     var tblView: UITableView! {get set}
 }
 
 
-class CategoryListViewController : UIViewController, ViewControllerConfigurationProtocol, ListViewControllerProtocol {
+class CategoryListViewController : UIViewController, ListViewControllerProtocol {
     
     
     let recipeVM : CategoryViewModel?
@@ -73,7 +73,11 @@ class CategoryListViewController : UIViewController, ViewControllerConfiguration
             .receive(on: RunLoop.main)
             .sink(receiveValue: { status in
             if status == .success {
+                
+                DispatchQueue.main.async {
                     self.tblView.reloadData()
+                }
+                    
                 
             }else {
                 
@@ -118,9 +122,17 @@ extension CategoryListViewController:  UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let _ = self.recipeVM?.resultItem?[indexPath.row] else {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let meailCategory = self.recipeVM?.resultItem?[indexPath.row] else {
+            
             return
         }
-
+        
+        let mealCategoryVC = MealListViewController(withMealVM: CategoryMealViewModel(categoryService: MealService(withEndPoint: MealCategoryEnfPoint(withQueryParam: [:], andOperation: .getAll))), andMeal: meailCategory)
+        
+        self.navigationController?.pushViewController(mealCategoryVC, animated: true)
+        
     }
+    
+
 }

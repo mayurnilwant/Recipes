@@ -21,14 +21,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        let reviceVM = RecipeViewModel(withRecipeService: RecipeService(withEndPoint: CategoryRecipeEndPoint(withQueryParam: [:], andOperation: .getAll)))
 //
 //        reviceVM.getAllRecipe()
+    
         
-        
-        let categoryMealVM = CategoryMealViewModel(categoryService: MealService(withEndPoint: MealCategoryEnfPoint(withQueryParam: [:], andOperation: .getAll)))
-        
-        let result = categoryMealVM.getAllMeals(id: "Beef") { result in
-        
-            print("Name")
-        }
+//        let result = categoryMealVM.getAllMeals(id: "Beef") { result in
+//        
+//            print("Name")
+//        }
         
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
