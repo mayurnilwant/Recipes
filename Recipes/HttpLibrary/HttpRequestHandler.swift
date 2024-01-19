@@ -98,7 +98,21 @@ struct Reciperesponse : Codable {
     
 }
 
-struct RecipeCategory : Codable {
+struct RecipeCategory : Codable,ListCellModel {
+    
+    var title: String {
+        
+        self.categoryName ?? ""
+    }
+    
+    var subTitle: String {
+        self.categoryDescription ?? ""
+    }
+    
+    var imageUrlString: String {
+        self.categoryThumbNail ?? ""
+    }
+    
     
     let categoryId: String?
     let categoryName: String?

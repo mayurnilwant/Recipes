@@ -9,8 +9,14 @@ import Foundation
 import UIKit
 
 
-class ListCell: UITableViewCell {
+protocol ListCellModel: Codable {
     
+    var title: String {get}
+    var subTitle: String {get}
+    var imageUrlString: String {get}
+}
+
+class ListCell: UITableViewCell {
     
     var recipeCategoryImage: UIImageView = {
         
@@ -62,10 +68,10 @@ class ListCell: UITableViewCell {
     
     // PRAGMA MARK - Custom Function
     
-     func configureCell(withRecipe recipe: RecipeCategory ) {
+     func configureCell(withListModel model: ListCellModel) {
         
-        self.lblTitle.text = recipe.categoryName
-        self.lblDescription.text = recipe.categoryDescription
+        self.lblTitle.text = model.title
+        self.lblDescription.text = model.subTitle
         self.recipeCategoryImage.image = UIImage(named: "loading")
     }
      

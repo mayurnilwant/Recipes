@@ -52,7 +52,7 @@ class RecipeListViewController : UIViewController, ViewControllerConfigurationPr
     override func viewDidAppear(_ animated: Bool) {
         
         self.tblView = UITableView(frame: self.view.frame, style: .plain)
-        self.tblView.register(RecipeCell.self, forCellReuseIdentifier: "cellIdentifier")
+        self.tblView.register(ListCell.self, forCellReuseIdentifier: "cellIdentifier")
         self.tblView.delegate = self
         self.tblView.dataSource = self
         self.view.addSubview(tblView)
@@ -94,13 +94,13 @@ extension RecipeListViewController:  UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
-        var _cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier") as? RecipeCell
+        var _cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier") as? ListCell
         if _cell == nil {
-            _cell = RecipeCell(style: .default, reuseIdentifier: "cellIdentifier")
+            _cell = ListCell(style: .default, reuseIdentifier: "cellIdentifier")
         }
         
         if let recipe = self.recipeVM?.resultItem?[indexPath.row] as? RecipeCategory{
-            _cell?.configureCell(withRecipe: recipe)
+            _cell?.configureCell(withListModel: recipe)
             
             _cell?.recipeCategoryImage.downLoadImageInBackground(withUrl: recipe.categoryThumbNail ?? "")
         }
