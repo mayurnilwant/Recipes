@@ -24,26 +24,35 @@ extension UIImageView {
         
     }
     
-    func downLoadImageInBackground(withUrl url: String){
+    func downLoadImageInBackground(withUrl url: String)  {
         
         guard let imageUrl = URL(string: url) else {
             return
         }
         
         let session = URLSession.shared
-        let _ = session.dataTask(with: URLRequest(url: imageUrl)) {[weak self] imageData, response, error in
-            
-            guard let status = (response as? HTTPURLResponse)?.statusCode, (200...299).contains(status) else {
-                
-                return
-            }
-            
-            DispatchQueue.main.async {
-                self?.image = UIImage(data: imageData ?? Data())
-            }
-            
-            
-        }.resume()
+        
+        Task {
+            let (imgData, _) = try await session.data(from: imageUrl)
+            self.image = UIImage(data: imgData)
+        }
+        
+        
+        
+        
+//        let _ = session.dataTask(with: URLRequest(url: imageUrl)) {[weak self] imageData, response, error in
+//            
+//            guard let status = (response as? HTTPURLResponse)?.statusCode, (200...299).contains(status) else {
+//                
+//                return
+//            }
+//            
+//            DispatchQueue.main.async {
+//                self?.image = UIImage(data: imageData ?? Data())
+//            }
+//            
+//            
+//        }.resume()
         
     }
     
