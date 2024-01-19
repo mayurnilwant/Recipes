@@ -33,7 +33,11 @@ extension UIImageView {
         let session = URLSession.shared
         
         Task {
-            let (imgData, _) = try await session.data(from: imageUrl)
+            let (imgData, httpResponse) = try await session.data(from: imageUrl)
+            
+            guard (httpResponse as? HTTPURLResponse)?.statusCode == 200 else {
+                    return
+            }
             self.image = UIImage(data: imgData)
         }
         
