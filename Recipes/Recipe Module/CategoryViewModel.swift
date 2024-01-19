@@ -26,13 +26,13 @@ protocol ViewModelProtocol {
 class CategoryViewModel: ViewModelProtocol {
     var resultItem: [RecipeCategory]?
     @Published var viewModelServiceStatus = ServiceVMStatus.notInitialized
-    let recipeService: RecipeServiceProtocol?
+    let recipeService: CategoryServiceProtocol?
     
     
     // Publish result through PassBy value
 //    var publishRecipeResultService : PassthroughSubject<[Recipe]?,Error>?
     
-    init(withRecipeService service: RecipeServiceProtocol) {
+    init(withRecipeService service: CategoryServiceProtocol) {
         
         self.recipeService = service
         
@@ -42,7 +42,7 @@ class CategoryViewModel: ViewModelProtocol {
         guard  self.recipeService != nil else {
             return
         }
-        self.recipeService?.getAllRecipes {[weak self] result in
+        self.recipeService?.getAllCategory {[weak self] result in
             
             switch result {
             case .success(let recipe):

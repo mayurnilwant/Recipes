@@ -8,14 +8,14 @@
 import Foundation
 
 
-protocol RecipeServiceProtocol : HttpRequestHandlerProtocol{
+protocol CategoryServiceProtocol : HttpRequestHandlerProtocol{
     
-    func getAllRecipes(withCallBack callBack: @escaping APIResultCallback<Reciperesponse>)
+    func getAllCategory(withCallBack callBack: @escaping APIResultCallback<Reciperesponse>)
 }
 
 
-class RecipeService: RecipeServiceProtocol {
-    func getAllRecipes(withCallBack callBack: @escaping APIResultCallback<Reciperesponse>) {
+class RecipeService: CategoryServiceProtocol {
+    func getAllCategory(withCallBack callBack: @escaping APIResultCallback<Reciperesponse>) {
         self.fetchRequest(withType: Reciperesponse.self) { apiResult in
             callBack(apiResult)
         }
