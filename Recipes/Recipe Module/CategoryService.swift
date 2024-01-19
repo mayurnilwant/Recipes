@@ -14,7 +14,7 @@ protocol CategoryServiceProtocol : HttpRequestHandlerProtocol{
 }
 
 
-class RecipeService: CategoryServiceProtocol {
+class CategoryService: CategoryServiceProtocol {
     func getAllCategory(withCallBack callBack: @escaping APIResultCallback<Reciperesponse>) {
         self.fetchRequest(withType: Reciperesponse.self) { apiResult in
             callBack(apiResult)
