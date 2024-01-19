@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-class RecipeCell: UITableViewCell {
+class ListCell: UITableViewCell {
     
     
     var recipeCategoryImage: UIImageView = {
