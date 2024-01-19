@@ -76,7 +76,7 @@ extension HttpRequestHandlerProtocol {
 
 struct Reciperesponse : Codable {
     
-    let recipes : [Recipe]?
+    let recipes : [RecipeCategory]?
     
     enum CodingKeys: String, CodingKey {
         case categories = "categories"
@@ -85,7 +85,7 @@ struct Reciperesponse : Codable {
     init(from decoder: Decoder) throws {
         
         let container = try? decoder.container(keyedBy: CodingKeys.self)
-        self.recipes = try? container?.decodeIfPresent([Recipe].self, forKey: CodingKeys.categories)
+        self.recipes = try? container?.decodeIfPresent([RecipeCategory].self, forKey: CodingKeys.categories)
         
         print("Value")
         
@@ -97,7 +97,7 @@ struct Reciperesponse : Codable {
     
 }
 
-struct Recipe : Codable {
+struct RecipeCategory : Codable {
     
     let categoryId: String?
     let categoryName: String?

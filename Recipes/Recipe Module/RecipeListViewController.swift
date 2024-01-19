@@ -99,7 +99,7 @@ extension RecipeListViewController:  UITableViewDelegate, UITableViewDataSource 
             _cell = RecipeCell(style: .default, reuseIdentifier: "cellIdentifier")
         }
         
-        if let recipe = self.recipeVM?.resultItem?[indexPath.row] as? Recipe{
+        if let recipe = self.recipeVM?.resultItem?[indexPath.row] as? RecipeCategory{
             _cell?.configureCell(withRecipe: recipe)
             
             _cell?.recipeCategoryImage.downLoadImageInBackground(withUrl: recipe.categoryThumbNail ?? "")

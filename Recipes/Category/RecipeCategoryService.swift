@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+struct MealMetaData {
+    
+    
+    
+}
+
+
+protocol CategoryRecipeProtocol:HttpRequestHandlerProtocol {
+    
+    func getCategoryLestById(withCategoryName name: String)
+}

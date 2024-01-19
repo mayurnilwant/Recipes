@@ -62,7 +62,7 @@ class RecipeCell: UITableViewCell {
     
     // PRAGMA MARK - Custom Function
     
-     func configureCell(withRecipe recipe: Recipe ) {
+     func configureCell(withRecipe recipe: RecipeCategory ) {
         
         self.lblTitle.text = recipe.categoryName
         self.lblDescription.text = recipe.categoryDescription
