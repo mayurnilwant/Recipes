@@ -13,6 +13,11 @@
 		E69E342C2B59FC9E00C02167 /* MealService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E342B2B59FC9E00C02167 /* MealService.swift */; };
 		E69E342E2B5A0E9300C02167 /* CategoryMealVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E342D2B5A0E9300C02167 /* CategoryMealVM.swift */; };
 		E69E34552B5B278A00C02167 /* MealListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E34542B5B278A00C02167 /* MealListViewController.swift */; };
+		E69E34582B5B6A7900C02167 /* MealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E34572B5B6A7900C02167 /* MealViewModel.swift */; };
+		E69E345A2B5B6AC200C02167 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E34592B5B6AC200C02167 /* Meal.swift */; };
+		E69E345C2B5B741400C02167 /* MealDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E345B2B5B741400C02167 /* MealDetailService.swift */; };
+		E69E345E2B5DE49800C02167 /* MealDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E345D2B5DE49800C02167 /* MealDetailView.swift */; };
+		E69E34812B609C4F00C02167 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E34802B609C4F00C02167 /* AsyncImageView.swift */; };
 		E6D698662B444E0A0085A54D /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D698652B444E0A0085A54D /* CategoryService.swift */; };
 		E6D698692B44CC960085A54D /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D698682B44CC960085A54D /* CategoryListViewController.swift */; };
 		E6F741492B40B004004EDD3C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F741482B40B004004EDD3C /* SceneDelegate.swift */; };
@@ -30,6 +35,11 @@
 		E69E342B2B59FC9E00C02167 /* MealService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealService.swift; sourceTree = "<group>"; };
 		E69E342D2B5A0E9300C02167 /* CategoryMealVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMealVM.swift; sourceTree = "<group>"; };
 		E69E34542B5B278A00C02167 /* MealListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListViewController.swift; sourceTree = "<group>"; };
+		E69E34572B5B6A7900C02167 /* MealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewModel.swift; sourceTree = "<group>"; };
+		E69E34592B5B6AC200C02167 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		E69E345B2B5B741400C02167 /* MealDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailService.swift; sourceTree = "<group>"; };
+		E69E345D2B5DE49800C02167 /* MealDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailView.swift; sourceTree = "<group>"; };
+		E69E34802B609C4F00C02167 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		E6D698652B444E0A0085A54D /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		E6D698682B44CC960085A54D /* CategoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListViewController.swift; sourceTree = "<group>"; };
 		E6F741432B40B004004EDD3C /* Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +81,25 @@
 			path = "Category Module";
 			sourceTree = "<group>";
 		};
+		E69E34562B5B692200C02167 /* Meal Module */ = {
+			isa = PBXGroup;
+			children = (
+				E69E34572B5B6A7900C02167 /* MealViewModel.swift */,
+				E69E34592B5B6AC200C02167 /* Meal.swift */,
+				E69E345B2B5B741400C02167 /* MealDetailService.swift */,
+				E69E345D2B5DE49800C02167 /* MealDetailView.swift */,
+			);
+			path = "Meal Module";
+			sourceTree = "<group>";
+		};
+		E69E347F2B609C3200C02167 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				E69E34802B609C4F00C02167 /* AsyncImageView.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		E6D698672B44CAC20085A54D /* App Delegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +128,8 @@
 		E6F741452B40B004004EDD3C /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
+				E69E347F2B609C3200C02167 /* Utility */,
+				E69E34562B5B692200C02167 /* Meal Module */,
 				E6F7415F2B43BDBC004EDD3C /* Recipe Module */,
 				E69E342A2B59FC5100C02167 /* Category Module */,
 				E69E34272B58D0C800C02167 /* Extension */,
@@ -203,13 +234,18 @@
 			files = (
 				E6F741612B43BDD4004EDD3C /* CategoryViewModel.swift in Sources */,
 				E69E34552B5B278A00C02167 /* MealListViewController.swift in Sources */,
+				E69E345A2B5B6AC200C02167 /* Meal.swift in Sources */,
+				E69E34582B5B6A7900C02167 /* MealViewModel.swift in Sources */,
 				E69E342E2B5A0E9300C02167 /* CategoryMealVM.swift in Sources */,
 				E6F7415C2B413190004EDD3C /* EndPointManager.swift in Sources */,
 				E6D698692B44CC960085A54D /* CategoryListViewController.swift in Sources */,
 				E69E342C2B59FC9E00C02167 /* MealService.swift in Sources */,
+				E69E345C2B5B741400C02167 /* MealDetailService.swift in Sources */,
 				E69E34292B58D0EE00C02167 /* UIImageView+Extension.swift in Sources */,
 				E69E34262B5877AB00C02167 /* ListCell.swift in Sources */,
 				E6D698662B444E0A0085A54D /* CategoryService.swift in Sources */,
+				E69E345E2B5DE49800C02167 /* MealDetailView.swift in Sources */,
+				E69E34812B609C4F00C02167 /* AsyncImageView.swift in Sources */,
 				E69E34242B57444500C02167 /* AppDelegate.swift in Sources */,
 				E6F7415E2B439278004EDD3C /* HttpRequestHandler.swift in Sources */,
 				E6F741492B40B004004EDD3C /* SceneDelegate.swift in Sources */,

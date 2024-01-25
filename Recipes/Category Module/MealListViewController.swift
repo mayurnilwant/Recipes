@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 import Combine
 
@@ -58,7 +59,7 @@ class MealListViewController: UIViewController, ListViewControllerProtocol {
     }
     
     func configureViewController() {
-        self.navigationItem.title = "Category - \(recipeCategory.categoryName ?? "")"
+        self.navigationItem.title = "\(recipeCategory.categoryName ?? "")"
     }
     
     func getAllMealsForCategory() {
@@ -123,6 +124,30 @@ extension MealListViewController: UITableViewDelegate, UITableViewDataSource {
         return _cell ?? UITableViewCell()
     }
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let _meal = self.mealVM.resultItem?[indexPath.row] else {return }
+        
+        let mealService = MealDetailService(withEndPoint: MealCategoryEnfPoint(withQueryParam: [:], andOperation: .getItemById))
+       //
+       //        meailService.getMealDetail(forMealId: "52772") { result in
+       //
+       //            print(result)
+       //        }
+        
+        //make a UIHostingViewControlelr
+        
+        let mealVM = MealViewModel(withMealMetaData: _meal, andMealService: mealService)
+        let  mealDetailViewController = UIHostingController(rootView: MealDetailView(viewModel: mealVM))
+        
+        mealDetailViewController.navigationController?.title = "Meal Detail"
+        self.navigationController?.pushViewController(mealDetailViewController, animated: true)
+        
+        
+    }
     
     
 }

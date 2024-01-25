@@ -140,7 +140,7 @@ struct MealCategoryEnfPoint: EndPointProtocol {
         case .getAll:
             return "/api/json/v1/1/filter.php"
         case .getItemById:
-           return "/api/json/v1/1/filter.php"
+           return "/api/json/v1/1/lookup.php"
         case .postItem(_):
            return "/path"
         }
@@ -148,3 +148,5 @@ struct MealCategoryEnfPoint: EndPointProtocol {
     
     
 }
+
+

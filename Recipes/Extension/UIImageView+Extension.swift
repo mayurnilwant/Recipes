@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 
 extension UIImageView {
@@ -36,28 +37,27 @@ extension UIImageView {
             let (imgData, httpResponse) = try await session.data(from: imageUrl)
             
             guard (httpResponse as? HTTPURLResponse)?.statusCode == 200 else {
-                    return
+                return
             }
             self.image = UIImage(data: imgData)
         }
         
-        
-        
-        
-//        let _ = session.dataTask(with: URLRequest(url: imageUrl)) {[weak self] imageData, response, error in
-//            
-//            guard let status = (response as? HTTPURLResponse)?.statusCode, (200...299).contains(status) else {
-//                
-//                return
-//            }
-//            
-//            DispatchQueue.main.async {
-//                self?.image = UIImage(data: imageData ?? Data())
-//            }
-//            
-//            
-//        }.resume()
-        
     }
     
 }
+        extension Image{
+            
+//            mutating func downLoadImageInBackground(withEndPoint endPoint: String) {
+//                
+//                guard let _ = URL(string: endPoint) else {
+//                        return
+//                }
+//                Task {
+//                    let (data,response) = try await URLSession.shared.data(from: URL(string: endPoint)!)
+//                    self = Image(uiImage: UIImage(data: data) ?? Data())
+//                }
+//                
+//                
+//            }
+        }
+    

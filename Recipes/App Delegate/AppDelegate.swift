@@ -16,6 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        let categoryRecipeEndPoint = CategoryRecipeEndPoint(withQueryParam: nil, andOperation: .getAll)
 //        print("Mayur Nilwant \(categoryRecipeEndPoint.url)")
+        
+//        
+//        let meailService = MealDetailService(withEndPoint: MealCategoryEnfPoint(withQueryParam: [:], andOperation: .getItemById))
+//        
+//        meailService.getMealDetail(forMealId: "52772") { result in
+//            
+//            print(result)
+//        }
         return true
     }
 

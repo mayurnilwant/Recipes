@@ -13,13 +13,13 @@ class MealDetailService : HttpRequestHandlerProtocol {
     
     required init(){}
     
-    func getMealDetail(forMealId id: String, andCallBack callBack:@escaping ((ApiResult<Meal, ApiError>) -> Void) ) {
+    func getMealDetail(forMealId id: String, andCallBack callBack:@escaping ((ApiResult<MealDetailResponse, ApiError>) -> Void) ) {
         
         self.endPoint?.queryParam = ["i": id]
         
-        self.fetchRequest(withType: Meal.self) { result in
+        self.fetchRequest(withType: MealDetailResponse.self) { result in
             
-                callBack(result)
+            callBack(result)
                 
             }
         }
